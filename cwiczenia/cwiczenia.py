@@ -371,31 +371,96 @@ Lotto tzn. wybierze 6 unikalnych liczb z 49."""
 JSON
 
 """
-import json
+# import json
+#
+# film = {
+#     'title': 'Ale ja nie będę tego robil!',
+#     'release_year' : 1969,
+#     'won_oscar' : True,
+#     'actors' : ('Michał','Marlena'),
+#     'budget' : None,
+#     'credits' : {
+#         'director' : 'Michał',
+#         'writer' : 'Marlena',
+#         'animator' : 'marcin'
+#     }
+# }
+#
+# x = json.dumps(film, ensure_ascii=False, indent=4,)
+#
+# with open('przyklad.json', 'w', encoding='UTF-8') as file:
+#     json.dump(film, file, ensure_ascii=False, indent=4)
+# print(x)
+#
+# with open('file.json', encoding='UTF-8') as file:
+#     x = json.load(file)
+#
+# # print(json.dumps(x,indent=4, sort_keys=True))
+#
+# import pprint
+# pprint.pprint(x, indent=4)
 
-film = {
-    'title': 'Ale ja nie będę tego robil!',
-    'release_year' : 1969,
-    'won_oscar' : True,
-    'actors' : ('Michał','Marlena'),
-    'budget' : None,
-    'credits' : {
-        'director' : 'Michał',
-        'writer' : 'Marlena',
-        'animator' : 'marcin'
-    }
-}
+# with open('oceany.txt', 'a', encoding="UTF-8") as file:
+#     file.write('\ntest')
+#     print(file.tell())
 
-x = json.dumps(film, ensure_ascii=False, indent=4,)
+# x = []
+# with open('imionanazwiska.txt', 'r',encoding="UTF-8" ) as file:
+#         for line in file:
+#                 x.append(tuple(line.replace('\n', "").split(' ')))
+# print(x)
+#
+# with open('imiona.txt', 'w',encoding="UTF-8" ) as file:
+#         for item in x:
+#                 file.write(item[0] + '\n')
+#
+# with open('nazwiska.txt', 'w',encoding="UTF-8" ) as file:
+#         for item in x:
+#                 try:
+#                         file.write(item[1] + '\n')
+#                 except IndexError:
+#                         file.write('\n')
 
-with open('przyklad.json', 'w', encoding='UTF-8') as file:
-    json.dump(film, file, ensure_ascii=False, indent=4)
-print(x)
+cleandoc("""Stwórz funkcję, która obsługuje otwieranie pliku do wczytywania danych.
+Zapytaj się użytkownika o nazwę pliku, który chce otworzyć do wczytania.
+Jeśli plik nie istnieje wypisz mu odpowiedni komunikat.
+Jeśli plik istnieje wczytaj całą jego zawartość i zwróć jako wynik funkcji.
+Podpowiedź: skorzystaj z wiedzy dotyczącej obsługi wyjątków z poprzedniej lekcji:
+except FileNotFoundError:""")
 
-with open('file.json', encoding='UTF-8') as file:
-    x = json.load(file)
+def open_file_to_read_data(path):
+        try:
+                with open(path, 'r',encoding="UTF-8") as file:
+                        print(file.read())
+        except FileNotFoundError:
+                print('Nie znaleziono takiego pliku')
 
-# print(json.dumps(x,indent=4, sort_keys=True))
+ask_about_name_file = input('Podaj nazwe pliku jaka cchesz otworzyc: ')
 
-import pprint
-pprint.pprint(x)
+file_name = open_file_to_read_data(ask_about_name_file)
+
+cleandoc("""
+1) Napisz kod, który sprawdzi, jak często słowo "kot" występuje w pliku "tekst.txt".
+Dane wejściowe:
+Ścieżka do pliku: "tekst.txt"
+Słowo do wyszukania: "kot"
+Dane wyjściowe:
+Liczba wystąpień słowa "kot" w pliku "tekst.txt":
+Przykład:
+Jeśli w pliku "tekst.txt" znajduje się tekst "Kot jest bardzo fajnym zwierzęciem", to kod powinien wyświetlić "Słowo 'kot' wystąpiło 1 razy w pliku 'tekst.txt'."
+Wskazówki:
+Otwórz plik w trybie odczytu i za pomocą metody count zlicz wystąpienia słowa w całym pliku.
+Wyświetl wynik za pomocą instrukcji print.
+2) Pamiętaj o obsłudze wyjątków!
+FileNotFoundError występuje, gdy plik o podanej ścieżce nie zostanie znaleziony.
+PermissionError występuje, gdy brak jest uprawnień do odczytu pliku.
+3) Gdy wypiszesz dane skorzystaj z formatted stringa
+Przykład:
+imie = "Jan"
+wiek = 30
+print(f"Cześć, nazywam się {imie} i mam {wiek} lat.")  # wyświetli "Cześć, nazywam się Jan i mam 30 lat."
+"f" na początku ciągu znaków oznacza, że jest to tzw. f-string (ang. formatted string).
+F-string to nowa wersja ciągów znaków w Pythonie, która pozwala na szybkie i łatwe formatowanie ciągów znaków za pomocą zmiennych i wyrażeń.
+F-string pozwala na oszczędzenie czasu i linii kodu, ponieważ nie trzeba już używać operatora "+" do połączenia ciągów znaków ze zmiennymi.
+Uwaga: f-string dostępny jest od Python 3.6. Jeśli używasz starszej wersji Pythona, możesz użyć operatora "+" do formatowania ciągów znaków.
+""")
