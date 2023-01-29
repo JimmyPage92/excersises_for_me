@@ -428,16 +428,16 @@ Jeśli plik istnieje wczytaj całą jego zawartość i zwróć jako wynik funkcj
 Podpowiedź: skorzystaj z wiedzy dotyczącej obsługi wyjątków z poprzedniej lekcji:
 except FileNotFoundError:""")
 
-def open_file_to_read_data(path):
-        try:
-                with open(path, 'r',encoding="UTF-8") as file:
-                        print(file.read())
-        except FileNotFoundError:
-                print('Nie znaleziono takiego pliku')
-
-ask_about_name_file = input('Podaj nazwe pliku jaka cchesz otworzyc: ')
-
-file_name = open_file_to_read_data(ask_about_name_file)
+# def open_file_to_read_data(path):
+#         try:
+#                 with open(path, 'r',encoding="UTF-8") as file:
+#                         print(file.read())
+#         except FileNotFoundError:
+#                 print('Nie znaleziono takiego pliku')
+#
+# ask_about_name_file = input('Podaj nazwe pliku jaka cchesz otworzyc: ')
+#
+# file_name = open_file_to_read_data(ask_about_name_file)
 
 cleandoc("""
 1) Napisz kod, który sprawdzi, jak często słowo "kot" występuje w pliku "tekst.txt".
@@ -464,3 +464,17 @@ F-string to nowa wersja ciągów znaków w Pythonie, która pozwala na szybkie i
 F-string pozwala na oszczędzenie czasu i linii kodu, ponieważ nie trzeba już używać operatora "+" do połączenia ciągów znaków ze zmiennymi.
 Uwaga: f-string dostępny jest od Python 3.6. Jeśli używasz starszej wersji Pythona, możesz użyć operatora "+" do formatowania ciągów znaków.
 """)
+
+file = 'text.txt'
+word = 'kot'
+try:
+        with open(file, 'r', encoding="UTF-8") as file:
+
+                tekst = file.read()
+                wystapienia = tekst.count(word)
+
+        print(f'Slowo {word} wystepuje tyle razy: {wystapienia}')
+except FileNotFoundError:
+        print(f'Nie ma takiego pliku o nazwie {file}')
+except PermissionError:
+        print(f'brak jest uprawnień do odczytu pliku {file}')
